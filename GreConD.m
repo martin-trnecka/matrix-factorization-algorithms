@@ -24,8 +24,10 @@ while any(any(U))
     d_mid = false(1,n);
     e = true(m,1); % extent for speed closure
     
+    atr = find(sum(U)>0); % only not covered attributes
+    
     while 1
-        for j=1:n
+        for j=atr
             if ~d(j)
                 [cost, a, b] = cover(e, j, U, M);
                 if cost > v

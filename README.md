@@ -1,1 +1,1 @@
-Implementations of matrix factorization methods over finite scale.
+Implementations of matrix factorization methods over an finite scale.

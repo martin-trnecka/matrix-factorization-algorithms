@@ -1,7 +1,7 @@
 function [ A, B ] = GreConD( I, no_of_factors )
 % GRECOND implements GreConD algorithm for Boolean matrix factorization 
 
-% usage [A, B] = GreConD(I);
+% usage: [A, B] = GreConD(I);
 % returns A \circ B = I (if the no. of factors is not limited)
 
 % if you are using this implementation please cite the following work

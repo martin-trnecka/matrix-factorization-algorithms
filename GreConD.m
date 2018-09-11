@@ -29,7 +29,16 @@ while any(any(U))
     while 1
         for j=atr
             if ~d(j)
-                [cost, a, b] = cover(e, j, U, M);
+                % computes the value of the cover function for the candidate factor
+                % inline function for speed
+                % arrow down (speed version)
+                a = e & M(:,j);
+                % arrow up
+                b = all(M(a,:),1);
+                % coverage
+                cost = sum(sum(U(a,b)));
+                %
+                
                 if cost > v
                     v = cost;
                     d_mid = b;
@@ -62,20 +71,4 @@ while any(any(U))
     % delete already covered part
     U(c, d) = 0;
 end
-end
-
-
-% computes a value of the cover function for the candidate factor
-function [cost, a, b] = cover( c, y, U, M )
-
-% arrow down (speed version)
-a = c & M(:,y);
-%a = all(M(:,D),2);
-
-% arrow up
-b = all(M(a,:),1);
-
-% coverage
-cost = sum(sum(U(a,b)));
-
 end

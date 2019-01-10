@@ -33,16 +33,20 @@ while any(any(U))
                 % inline function for speed
                 % arrow down (speed version)
                 a = e & M(:,j);
-                % arrow up
-                b = all(M(a,:),1);
-                % coverage
-                cost = sum(sum(U(a,b)));
-                %
+                % arrow ups
+                sum_a = sum(a);
+                if sum_a*n > v % check the size of upper bound
+                    b = all(M(a,:),1);
                 
-                if cost > v
-                    v = cost;
-                    d_mid = b;
-                    c = a;
+                    if sum_a*sum(b) > v % check the size of upper bound
+                        cost = sum(sum(U(a,b)));
+                
+                        if cost > v
+                            v = cost;
+                            d_mid = b;
+                            c = a;
+                        end
+                    end
                 end
             end
         end
